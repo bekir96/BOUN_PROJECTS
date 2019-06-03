@@ -2,6 +2,9 @@
 
 :school: My University Projects that I have written.
 
+**[CmpE150 - CmpE150 - Introduction to Computing](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE150)**
+- [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE150/Project1) `Java`
+
 **[CmpE160 - Introduction to Object Oriented Programming](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE160)**
 - [Project 3(2019-Spring)](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE160/PuzzLeGame) `Java`
 
