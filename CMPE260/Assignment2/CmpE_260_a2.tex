@@ -1,0 +1,168 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings,tcolorbox}
+\title{CmpE 260 - Principles of Programming Languages \\Spring 2019 \\Assignment 2}
+\author{Bekir Yıldırım - 2014400054}
+\date{due: 27.05.2019 - 11:59}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{textcomp}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+  \hbox{}\nobreak\hfil(#1)%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}}
+  {\signed{\usebox\mybox}\end{quote}}
+  
+\begin{document}
+
+\maketitle
+
+\section*{Answer 1}
+(Code lines are designated with color \textcolor{red}{red})
+\\(Print statement with color \textcolor{blue}{blue} )
+\lstset{
+                language=C++,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{blue}\ttfamily,
+                commentstyle=\color{red}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#},
+                frame=single
+}
+\begin{lstlisting}
+int n = 50; // global           //1
+print_plus_n(int x) {           //2
+   cout << x + n << endl;       //3
+}                               //4
+increment_n() {                 //5
+   n = n + 1;                   //6
+}                               //7
+main() {                        //8
+   int n;                       //9
+   n = 10;                      //10
+   print_plus_n(n);             //11
+   increment_n();               //12
+   cout << n << endl;           //13
+   print_plus_n(n);             //14
+}                               //15
+\end{lstlisting} \\~\\ 
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item \textbf{Static Scoping} 
+    
+    \textit{Static Scoping} is a convention used with many programming languages that sets the scope (range of functionality) of a variable so that it may only be called (referenced) from within the block of code in which it is defined. The scope is determined when the code is compiled. 
+    \\~\\ \textbf{Explanation}  
+    \begin{enumerate}[label=\textbf{\alph*)}]
+    \item \textbf{First Output} \\~\\
+    Main function is the entry point of this C++ program. An integer variable n is declared in \textcolor{red}{(9)} and assigned a value of 10 in \textcolor{red}{(10)}. print\_plus\_n(n) definition is calling with a actual parameter of n for 10 and print\_plus\_n(int x) declaration in \textcolor{red}{(2)} with formal parameter, x, is called and value of actual parameter, 10, is passed to formal parameter, x.
+    x is assigned with 10 but no declaration is found for the variable n, so search continues in the declarations of the subprogram that declared subprogram print\_plus\_n(int x), which it is called its static parent. And a declaration for  n is found in \textcolor{red}{(1)}. Therefore, x+n becomes number of 60 so cout prints \textcolor{blue}{60}.\\
+    
+    \item \textbf{Second Output} 
+    \\~\\ increment\_n() statement is defined in main \textcolor{red}{(12)} and declaration of this function at \textcolor{red}{(5)}. This function have no actual and formal parameters so n has no declaration there. To find an assigned value, the search continues and a declaration for  n is found in \textcolor{red}{(1)}. value of n becomes 51 in \textcolor{red}{(6)} but this value cannot pass the line \textcolor{red}{(13)} since in static scoping, if a variable is static variable, it changes just in that subprogram. So cout in \textcolor{red}{(13)} prints \textcolor{blue}{10}.\\
+   
+    \item \textbf{Third Output} \\~\\
+    print\_plus\_n(n) function is called from main like as First Output, just there is difference in value of n. Because, \textcolor{red}{(23)} sets global value of n to 51, moreover third output is \newline 10+51 = 61 and \textcolor{red}{(3)} prints \textcolor{blue}{61}
+    \end{enumerate}
+    \\~\\ Outputs are given below respectively: \\ \textcolor{blue}{60} \\ \textcolor{blue}{10} \\ \textcolor{blue}{61} \\~\\
+    
+\item \textbf{Dynamic scoping} 
+
+\textit{Dynamic Scoping} does not care how the code is written, but instead how it executes. Each time a new function is executed, a new scope is pushed onto the stack. This scope is typically stored with the function’s call stack. When a variable is referenced in the function, the scope in each call stack is checked to see if it provides the value. \\~\\
+\textbf{Explanation}  
+\begin{enumerate}[label=\textbf{\alph*)}]
+    \item \textbf{First Output} \\~\\
+Main function is the entry point of this C++ program. An integer variable n is declared in \textcolor{red}{(9)} and assigned a value of 10 in \textcolor{red}{(10)}. print\_plus\_n(n) definition is calling with a actual parameter of n for 10 and print\_plus\_n(int x) declaration in \textcolor{red}{(2)} with formal parameter, x, is called and value of actual parameter, 10, is passed to formal parameter, x. In dynamic programming, global n becomes 10 because of assigned value of n in \textcolor{red}{(10)}.
+    x is assigned with 10 but no declaration is found for the variable n, so search continues in the declarations of the subprogram that declared subprogram print\_plus\_n(int x). And a declaration for  n is found in \textcolor{red}{(1)}. Therefore, x+n becomes number of 20 so cout prints \textcolor{blue}{20}\\
+   
+    
+    \item \textbf{Second Output} \\~\\
+    increment\_n() statement is defined in main \textcolor{red}{(12)} and declaration of this function at \textcolor{red}{(5)}. This function have no actual and formal parameters so n has no declaration there. To find an assigned value, the search continues and a declaration for  n is found with 10 in \textcolor{red}{(1)}. value of n becomes 11 in \textcolor{red}{(6)} and this value can pass the line \textcolor{red}{(13)} since in dynamic scoping, if a variable is defined and assigned at any time, it changes in everywhere. So cout in \textcolor{red}{(13)} prints \textcolor{blue}{(11)}.
+    
+    \item \textbf{Third Output} 
+    \\~\\ 
+    print\_plus\_n(n) function is called from main like as First Output, just there is difference in value of n. Because, \textcolor{red}{(23)} sets global value of n to 11, moreover third output is \newline 11+11 = 22 and \textcolor{red}{(3)} prints \textcolor{blue}{22}
+    \end{enumerate}
+    \\~\\ Outputs are given below respectively: \\ \textcolor{blue}{20} \\ \textcolor{blue}{11} \\ \textcolor{blue}{22} \\~\\
+\end{enumerate}
+
+
+\section*{Answer 2}
+
+\begin{lstlisting}
+void function1(int a, int b, int c) {           //1
+   int d = -1;                                  //2
+   while(a > 0) {                               //3
+      c = c / b;                                //4
+      a = a + d;                                //5
+    }                                           //6
+}                                               //7
+void function2(int a, int b) {                  //8
+   int c = b;                                   //9
+   b = a;                                       //10
+   a = c;                                       //11
+}                                               //12
+int main() {                                    //13
+   int x = 2;                                   //14
+   int y = 10;                                  //15
+   int z = 1500;                                //16
+   cout << x << "," << y << "," << z << endl;   //17
+   function1(x,y,z);                            //18
+   cout << x << "," << y << "," << z << endl;   //19
+   function2(x,z)                               //20
+   cout << x << "," << y << "," << z << endl;   //21
+}                                               //22
+\end{lstlisting}
+\\~\\ 
+\begin{enumerate}[label=\textbf{\alph*)}]
+    \item \textbf{Pass-by-value}\\
+
+Main function is the entry point of this C++ program and x,y,z variables are initialized by 2,10 and 1500 respectively. cout at \textcolor{red}{(17)} prints  \textcolor{blue}{2,10,1500} \textcolor{red}{(17)}. \\ Later, 
+function1(x,y,z) definition \textcolor{red}{(18)} is calling its declaration in \textcolor{red}{(1)} and x,y,z actual parameters which have values 2,10,1500 respectively are sent to formal parameters a,b and c respectively. But in function1, not see any statement about ability to change local variables in main function. So, 
+\textcolor{red}{(19)} prints 
+\textcolor{blue}{2,10,1500}.\\
+At last, function2(x,z) is similar as function1 in other words, function2 has not also any statement about ability to change local variables in main function. So, 
+\textcolor{red}{(21)} prints 
+\textcolor{blue}{2,10,1500}.
+\\~\\Outputs are given below respectively: \\ \textcolor{blue}{2,10,1500\\2,10,1500\\2,10,1500}  \\~\\ 
+
+    \item \textbf{Pass-by-reference} 
+
+Main function is the entry point of this C++ program and x,y,z variables are initialized by 2,10 and 1500 respectively. cout at \textcolor{red}{(17)} prints  \textcolor{blue}{2,10,1500} \textcolor{red}{(17)}.\\
+Later, function1(x,y,z) definition \textcolor{red}{(18)} is calling its declaration in \textcolor{red}{(1)} and x,y,z actual parameters which have values 2,10,1500 respectively are sent to formal parameters a,b and c respectively.
+Local variable d is initialized with value '-1'.
+In pass by reference, any change to formal parameters directly affects x,y and z. In the while loop, until a is 0, it will continue subtracting 1 from a and dividing c by b. loop will turn 2 times.
+When the loop exits, a, b and c take values 0, 10 and 15 respectively, so by the pass-by-reference, x, y and z values have changed.
+cout prints \textcolor{blue}{0,10,15} \textcolor{red}{(19)} \\
+At last, function2(x,z) is called with values actual parameters x and z, (0,15), and a and b take them. 
+In the function2 body, a local variable c is initialized with value 15 from b. b takes value 0 from a, finally a takes value 15 from c. So, the last values of x,y and z are 15, 10 and 0 respectively.
+cout prints \textcolor{blue}{15,10,0} \textcolor{red}{(21)} \\~\\
+Outputs are given below respectively: \\ \textcolor{blue}{2,10,1500\\0,10,15\\15,10,0} \\~\\ 
+    \item \textbf{Pass-by-name} \\
+Main function is the entry point of this C++ program and x,y,z variables are initialized by 2,10 and 1500 respectively. cout at \textcolor{red}{(17)} prints  \textcolor{blue}{2,10,1500} \textcolor{red}{(17)}.\\
+Later, function1(x,y,z) definition \textcolor{red}{(18)} is calling its declaration in \textcolor{red}{(1)} and x,y,z actual parameters which have values 2,10,1500 respectively are sent to formal parameters a,b and c respectively.
+Local variable d is initialized with value '-1'.
+In pass by name, any change to formal parameters directly affects x,y and z since pass-by-name in an inout mode parameter transmission method that does not correspond to a single implementation. In the while loop, until a is 0, it will continue subtracting 1 from a and dividing c by b. loop will turn 2 times.
+When the loop exits, a, b and c take values 0, 10 and 15 respectively, so by the pass-by-name, x, y and z values have changed.
+cout prints \textcolor{blue}{0,10,15} \textcolor{red}{(19)} \\
+At last, function2(x,z) is called with values actual parameters x and z, (0,15), and a and b take them. 
+In the function2 body, a local variable c is initialized with value 15 from b. b takes value 0 from a, finally a takes value 15 from c. So, the last values of x,y and z are 15, 10 and 0 respectively.
+cout prints \textcolor{blue}{15,10,0} \textcolor{red}{(21)} \newpage
+Outputs are given below respectively: \\ \textcolor{blue}{2,10,1500\\0,10,15\\15,10,0}
+\end{enumerate}
+
+\end{document}
