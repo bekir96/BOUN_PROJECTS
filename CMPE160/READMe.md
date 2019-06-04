@@ -2,7 +2,7 @@
 
 Term | Instructor
 -----| ----------
-Spring - 2017 | Tuna Tuğcu
+Spring - 2018 | Tuna Tuğcu
 
 **[Project 3](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE160/Project3) `Java`**
 
