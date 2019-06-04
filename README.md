@@ -2,7 +2,7 @@
 
 :school: My University Projects that I have written.
 
-**[CmpE150 - CmpE150 - Introduction to Computing](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE150)**
+**[CmpE150 - Introduction to Computing](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE150)**
 - [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE150/Project1) `Java`
 - [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE150/Project2) `Java`
 
