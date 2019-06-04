@@ -4,6 +4,7 @@
 
 **[CmpE150 - CmpE150 - Introduction to Computing](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE150)**
 - [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE150/Project1) `Java`
+- [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE150/Project2) `Java`
 
 **[CmpE160 - Introduction to Object Oriented Programming](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE160)**
 - [Project 3](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE160/Project3) `Java`
