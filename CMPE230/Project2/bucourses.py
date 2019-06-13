@@ -452,8 +452,10 @@ def sortedfunc(listTemp, control) :
         #else we need to sort keys
         else :
                 listTemp1 = []
-                for x in sorted(listTemp):
-                        listTemp1.append([x,listTemp[x]])
+                for x in listTemp:
+                        if x!= 'U' and x!= 'G' and x!= 'Course' and x!= 'All' and x!= 'I':
+                                listTemp1.append([x,listTemp[x]])
+                listTemp1.sort(key=lambda tup: tup[0][0])
         return listTemp1 
 
 dictAllList = construct_table(courseList, year1, year2, semester1, semester2,semesters, deps, dictList)
