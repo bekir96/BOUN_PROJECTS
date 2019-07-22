@@ -29,3 +29,6 @@
 - [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE260/Project1) `Prolog`
 - [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE260/Project2) `Scheme`
 - [Assignment 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE260/Assignment2) `LaTeX`
+
+**[CmpE321 - Introduction to Database System](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE321)**
+- [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE321/Project1) `LaTeX`
