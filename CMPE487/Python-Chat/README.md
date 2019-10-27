@@ -11,9 +11,9 @@
 
 ### Usage
 
-`$ chmod u+x python_chat.sh`
+`$ chmod u+x python_chat.py`
 
-`$ ./python_chat.sh`
+`$ ./python_chat.py`
 
 ### Design Notes
 
