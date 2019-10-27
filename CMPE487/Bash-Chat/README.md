@@ -4,10 +4,10 @@
 
 ### Requirements 
 
--bash version: version 5.0.11(x86_64-apple-darwin18.6.0)
--netcat
--I tested with Yusuf Yüksel (You can see in `Yusuf.txt` )
--Yusuf Yüksel's student id = 2014400051
+- bash version: version 5.0.11(x86_64-apple-darwin18.6.0)
+- netcat
+- I tested with Yusuf Yüksel (You can see in `Yusuf.txt` )
+- Yusuf Yüksel's student id = 2014400051
 
 ### Usage
 
