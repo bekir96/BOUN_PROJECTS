@@ -1,4 +1,4 @@
-# CmpE487 - SP. TP. APPLIED COMPUTER NETWORKS
+# CmpE487 - SP. TP. Applied Computer Networks
 
 Term | Instructor
 -----| ----------
