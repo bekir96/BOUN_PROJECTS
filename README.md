@@ -1,4 +1,4 @@
-# BOUN_PROJECTS :heavy_plus_sign:
+# BOUN_PROJECTS
 
 :school: My University Projects that I have written.
 
