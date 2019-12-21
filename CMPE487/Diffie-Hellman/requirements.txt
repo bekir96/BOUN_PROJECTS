@@ -1,0 +1,21 @@
+REQUİREMENTS
+
+- Python 3
+
+- Import Statements :
+	
+	import sys
+	import time
+	import os
+	import socket
+	import time
+	from _thread import *
+	from threading import Timer
+	import threading
+	import subprocess
+	import os
+	import pandas as pd
+	import pickle
+	import select
+	import pyDes
+	from random import randrange, getrandbits
