@@ -38,6 +38,7 @@
 
 **[CmpE322 - Operating System](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE322)**
 - [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE322/Project1) `C++`
+- [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE322/Project2) `C++`
 
 **[CmpE487 - SP. TP. Applied Computer Networks](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487)**
 - [Bash-Chat](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Bash-Chat) `Bash`
