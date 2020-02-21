@@ -30,6 +30,9 @@
 - [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE260/Project2) `Scheme`
 - [Assignment 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE260/Assignment2) `LaTeX`
 
+**[IE310 - Operations Research](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310)**
+- [Assignment 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment1) `Python`  
+
 **[CmpE300 - Analysis of Algorithms](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE300)**
 - [MPI](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE300/MPI%20Programming%20Projects) `Python`  
 
