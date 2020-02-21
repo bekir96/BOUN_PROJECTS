@@ -1,0 +1,7 @@
+.vscode
+.mypy_cache
+.idea
+.dmypy.json
+conda_env/*
+__pycache__
+.storage/*
