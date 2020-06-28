@@ -1,0 +1,86 @@
+<style>
+  #customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  </style>
+  
+  <div class="topnav">
+      <a href="/">Homepage</a>
+    </div>
+  
+
+  <table id="customers">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>View Songs</th>
+      <th>Like Album</th>
+    </tr>
+    {% for cur in albums %}
+    <tr>
+        <td>{{cur[0]}}</td>
+        <td>{{cur[1]}}</td>
+        <td>{{cur[2]}}</td>
+        <td><form method="post" action="/view-listener-songs"><input type="submit" name="view" value ="View" class="btn btn-xs white"/><input type="hidden" name="album_id" value="{{cur[0]}}" /><input type="hidden" name="artist_id" value="{{ artist_id }}" />
+          <input type="hidden" name="listener_id" value="{{listener_id}}" />  </form>
+        </td>
+        <td><form method="post" action="/like-listener-albums"><input type="submit" name="like" value ="Like" class="btn btn-xs white"/><input type="hidden" name="album_id" value="{{cur[0]}}" /><input type="hidden" name="artist_id" value="{{ artist_id }}" /> 
+          <input type="hidden" name="listener_id" value="{{listener_id}}" /> </form>
+        </td> 
+      </td> 
+    </tr>
+    {% endfor %}
+  </table>
+  
+  </body>
+  </html>

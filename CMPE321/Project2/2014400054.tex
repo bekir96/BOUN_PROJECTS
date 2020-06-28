@@ -1,0 +1,701 @@
+\documentclass{article}
+\usepackage{longtable}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage[siunitx]{circuitikz}
+\usepackage{tikz}
+\usepackage[colorinlistoftodos, color=orange!50]{todonotes}
+\usepackage{hyperref}
+\usepackage[numbers, square]{natbib}
+\usepackage{fancybox}
+\usepackage{epsfig}
+\usepackage{soul}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[shortlabels]{enumitem}
+\usepackage[version=4]{mhchem}
+\usepackage[table]{xcolor}
+\usepackage{arevmath}     % For math symbols
+\usepackage{xcolor}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\DeclareTextSymbol{\textlessthanequal}       
+\UnicodeEncodingName{"2264}
+
+
+
+
+\newcommand{\blah}{blah blah blah \dots}
+
+\setlength{\marginparwidth}{3.4cm}
+
+
+% NEW COUNTERS
+\newcounter{points}
+\setcounter{points}{100}
+\newcounter{spelling}
+\newcounter{english}
+\newcounter{units}
+\newcounter{other}
+\newcounter{source}
+\newcounter{concept}
+\newcounter{missing}
+\newcounter{math}
+\newcounter{terms}
+\newcounter{clarity}
+\newcounter{late}
+
+% COMMANDS
+
+\newcommand{\late}{\todo{late submittal (-5)}
+\addtocounter{late}{-5}
+\addtocounter{points}{-5}}
+
+\definecolor{pink}{RGB}{255,182,193}
+\newcommand{\hlp}[2][pink]{ {\sethlcolor{#1} \hl{#2}} }
+
+\definecolor{myblue}{rgb}{0.668, 0.805, 0.929}
+\newcommand{\hlb}[2][myblue]{ {\sethlcolor{#1} \hl{#2}} }
+
+\newcommand{\clarity}[2]{\todo[color=CornflowerBlue!50]{CLARITY of WRITING(#1) #2}\addtocounter{points}{#1}
+\addtocounter{clarity}{#1}}
+
+\newcommand{\other}[2]{\todo{OTHER(#1) #2} \addtocounter{points}{#1} \addtocounter{other}{#1}}
+
+\newcommand{\spelling}{\todo[color=CornflowerBlue!50]{SPELLING (-1)} \addtocounter{points}{-1}
+\addtocounter{spelling}{-1}}
+\newcommand{\units}{\todo{UNITS (-1)} \addtocounter{points}{-1}
+\addtocounter{units}{-1}}
+
+\newcommand{\english}{\todo[color=CornflowerBlue!50]{SYNTAX and GRAMMAR (-1)} \addtocounter{points}{-1}
+\addtocounter{english}{-1}}
+
+\newcommand{\source}{\todo{SOURCE(S) (-2)} \addtocounter{points}{-2}
+\addtocounter{source}{-2}}
+\newcommand{\concept}{\todo{CONCEPT (-2)} \addtocounter{points}{-2}
+\addtocounter{concept}{-2}}
+
+\newcommand{\missing}[2]{\todo{MISSING CONTENT (#1) #2} \addtocounter{points}{#1}
+\addtocounter{missing}{#1}}
+
+\newcommand{\maths}{\todo{MATH (-1)} \addtocounter{points}{-1}
+\addtocounter{math}{-1}}
+\newcommand{\terms}{\todo[color=CornflowerBlue!50]{SCIENCE TERMS (-1)} \addtocounter{points}{-1}
+\addtocounter{terms}{-1}}
+
+
+\newcommand{\summary}[1]{
+\begin{mdframed}[nobreak=true]
+\begin{minipage}{\textwidth}
+\vspace{0.5cm}
+\begin{center}
+\Large{Grade Summary} \hrule 
+\end{center} \vspace{0.5cm}
+General Comments: #1
+
+\vspace{0.5cm}
+Possible Points \dotfill 100 \\
+Points Lost (Late Submittal) \dotfill \thelate \\
+Points Lost (Science Terms) \dotfill \theterms \\
+Points Lost (Syntax and Grammar) \dotfill \theenglish \\
+Points Lost (Spelling) \dotfill \thespelling \\
+Points Lost (Units) \dotfill \theunits \\
+Points Lost (Math) \dotfill \themath \\
+Points Lost (Sources) \dotfill \thesource \\
+Points Lost (Concept) \dotfill \theconcept \\
+Points Lost (Missing Content) \dotfill \themissing \\
+Points Lost (Clarity of Writing) \dotfill \theclarity \\
+Other \dotfill \theother \\[0.5cm]
+\begin{center}
+\large{\textbf{Grade:} \fbox{\thepoints}}
+\end{center}
+\end{minipage}
+\end{mdframed}}
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\title{
+\normalfont \normalsize 
+\textsc{BOGAZICI UNIVERSITY, ISTANBUL, TURKEY \\ 
+CmpE321, Spring 2020} \\
+[10pt]
+\textsc{\Large Project 1}
+\rule{\linewidth}{0.5pt} \\[15pt] 
+\huge Designing Storage Manager System \\
+\rule{\linewidth}{2pt}  \\[30pt]
+}
+\author{Bekir Yıldırım - 2014400054}
+\date{\normalsize 3 May 2020}
+
+\begin{document}
+
+\maketitle
+\noindent
+\textsc{} \\
+[270pt]
+Date Performed \dotfill 3 May, 2020 \\
+Instructor \dotfill Taflan Gündem \\
+
+\tableofcontents{}
+
+\break
+
+\section{Introduction}
+    A storage manager is a program that controls how the memory will be used to save data to increase the efficiency of a system. The storage manager translates the various DML statements into low-level file-system commands. Thus, the storage manager is responsible for storing, retrieving, and updating data in the database. Can be thought as the interface between the DBMS and all the "physically" at the low levels. Storage manager is responsible for retrieving a record, and the other parts of the DBMS are only concerned with the records, not with files, pages, disk and so on. In this project, I am expected to design a storage manager system that supports DDL and DML operations. There should be a system catalogue which stores metadata and multiple data files that store the actual data. 
+    \begin{enumerate}
+	\item DDL Operations
+    \begin{enumerate}
+    	\item[--] Create a type
+        \item[--] Delete a type
+        \item[--] List all types
+    \end{enumerate}
+    \item DML Operations
+    \begin{enumerate}
+    	\item[--] Create a record
+        \item[--] Delete a record
+        \item[--] Search for a record by primary key
+        \item[--] Update record by primary key
+        \item[--] List all record for a type
+    \end{enumerate}
+\end{enumerate}
+This documents explains my design by showing my assumptions, constraints, storage structures and explaining the algorithms behind the DDL and DML operations in pseudo code. In according to assumptions and constraints, our storage structures and algorithm are arranged. The storage manager will keep according datas in \emph{"typeName.txt"} and \emph{"SystemCatalogue.txt"} will be the system catalogue. The records in a file are divided into unit collections(pages) in abstraction.
+    
+        
+    
+\section{Assumptions \& Constraints}
+Before the design of a storage manager system, one needs to determine the constraints on which the design decisions will be made, since it is not possible make a design without any limits/constraints. Also, we should make some assumptions to construct useful storage structures and algorithm.
+    \subsection{Assumptions}
+        \subsubsection{Type}
+            \begin{itemize}
+                \item UTF-8 standard is used in the system, it means a char equal 1 byte.
+                \item A data type can contain 10 fields provided by user exactly. Field values can only be integer as stated in the description.
+                \item More fields are not allowed, yet if it contains less field, the remaining fields will be null.
+                \item I choose the separate file style. Which means there will be a file for each entity type.
+                \item Duplicate names of data types are not allowed.
+                \item Type names shall be alphanumeric.
+            \end{itemize}
+        \subsubsection{System Catalogue}
+            \begin{itemize}
+                \item File name of the System Catalogue is \emph{"SystemCatalogue.txt"}.
+                \item System Catalogue file cannot be deleted by any user.
+                \item The system shall not allow to create more than one system catalogue file or delete an existing one.
+            \end{itemize}
+        \subsubsection{Page}
+             \begin{itemize}
+                \item Page will be 2048 bytes.
+                \item Page header stores; id of the page, type of records in that page, pointer address to next page in the file, number of record in that page, if that page is empty or not and maximum size of the page(which is 2048 bytes).
+            \end{itemize}
+        \subsubsection{File}
+            \begin{itemize}
+                \item Data files have the format \emph{"typeName.txt"}.
+                \item A data file can contain multiple pages.
+            \end{itemize}
+        \subsubsection{Record}
+            \begin{itemize}
+                \item Record consist of 10 fields. If it contains less, remaining fields considered as null.
+                \item Record header stores; state of the record(full,empty or deleted) as also integer.
+            \end{itemize}
+        \subsubsection{Field}
+            \begin{itemize}
+                \item All of the field values are integers.
+                \item Field names shall be alphanumeric.
+            \end{itemize}
+        \subsubsection{Users}
+            \begin{itemize}
+                \item User always enters valid input.
+            \end{itemize}
+        \subsubsection{Disk Manager}
+            \begin{itemize}
+                \item A disk manager already exists that is able to fetch the necessary pages when addressed.
+            \end{itemize}
+    \subsection{Constraints}
+        \subsubsection{Type}
+            \begin{itemize}
+                \item Type names are at most 10 characters long.
+                \item Type names shall be alphanumeric.
+                \item Max length of a type name ($\geq$ 8)
+            \end{itemize}
+        \subsubsection{System Catalogue}
+            \begin{itemize}
+                \item The system shall not allow to create more than one system catalogue file or delete an existing one.
+            \end{itemize}
+        \subsubsection{Page}
+             \begin{itemize}
+                \item A page can only contain one type of record.
+                \item Pages must contain records.
+            \end{itemize}
+        \subsubsection{File}
+            \begin{itemize}
+                \item Max file size can be 65Kb.
+                \item A file has at most 32 pages.
+                \item Should contain reasonable amount of pages 
+                \item Not allowed to store all pages in the same file and a file must contain multiple pages.
+                \item Although a file contains multiple pages, it must read page by page when it is needed. Loading the whole file to RAM is not allowed.
+                \item When a file becomes free due to deletions, that file must be deleted.
+
+            \end{itemize}
+        \subsubsection{Record}
+            \begin{itemize}
+                \item Record consist of 10 fields. If it contains less, remaining fields considered as null.
+                \item The primary key of a record should be assumed to be the value of the first field of that record.
+                \item Records in the files should be stored in ascending order according to their primary keys.
+            \end{itemize}
+        \subsubsection{Field}
+            \begin{itemize}
+                \item Field names are at most 10 characters long.
+                \item Field names shall be alphanumeric.
+                \item Max number of fields a type can have ($\geq$ 3)
+                \item Max length of a type name ($\geq$ 8)
+            \end{itemize}
+        
+
+\section{Storage Structures}
+    This design contains two main components which are System Catalogue and Data Files. It contains information about how many bytes are made up and how structure they have. All constraints reserved in \emph{"Constraints.py"}
+    \subsection{System Catalogue}
+        System catalogue is responsible for storing the metadata. It's a blueprint for data types. Any change that can be done in the system via this file. It has multiple pages. Page header(8 bytes) of system catalogue has information about page id and number of records. number of pages has information about how many pages is included in system catalogue and also has information about record with header and their field names. 
+        \subsubsection{\# of Records in The File(4 bytes)}
+        \subsubsection{Page Header(8 bytes)}
+            \begin{itemize}
+                 \item Page ID (4 bytes)
+                 \item \# of Records in The Page (4 bytes)
+            \end{itemize}
+        \subsubsection{Record(115 bytes)}
+            \begin{itemize}
+                 \item Record Header(16 bytes)
+                    \begin{itemize}
+                        \item Type Name(10 bytes)
+                        \item \# of Fields(not null)(4 bytes)
+                        \item Deletion Status (isDeleted) (1 byte)
+                        \item Exit Status (isExist) (1 byte)
+                    \end{itemize}
+                 \item Field Names(10*10=100 bytes)
+            \end{itemize}
+
+
+
+    \subsection{Data Files}
+        Data files store current datas. In our designed storage manager system, data files are separated into the number of types. Each data file can store one type of record. Data files have the name \emph{"typeName.txt"}. Each page in data file an store at most 48 records.
+        \subsubsection{\# of Records in The File(4 bytes)}
+        \subsubsection{Pages(2048 bytes)}
+            Page headers store information about the specific page it belongs to and points to next and previous page.
+            \begin{itemize}
+              \item Page Header (8 bytes)
+                \begin{itemize}
+                     \item Page ID (4 bytes)
+                     \item \# of Records (4 bytes)
+                \end{itemize}
+              \item Records 
+            \end{itemize}
+        \subsubsection{Records(42 bytes)}
+            \begin{itemize}
+              \item Record Header(2 bytes)
+                \begin{itemize}
+                    \item isEmpty (1 byte)
+                    \item isDeleted (1 byte)
+                \end{itemize}
+              \item Record Fields (10*4= 40 bytes)
+            \end{itemize}
+
+
+\section{System Design}
+    \subsection{System Catalogue}
+               
+                \begin{table}[h!]
+                \begin{center}
+                    \begin{tabular}{ | c | c | c | c | c | c | c | }
+                    \hline
+                        \multicolumn{7}{||c|}{\# of Records} \\
+                    \hline
+                    \hline
+                        \multicolumn{7}{||c|}{Page Header} \\
+                    \hline
+                    \hline
+                        \multicolumn{3}{||c|}{Page ID} &
+                        \multicolumn{4}{|c||}{\# of Records} \\
+                    \hline
+                    \hline
+                        \multicolumn{3}{||c|}{Record Header} &
+                        \multicolumn{4}{|c||}{Field Names} \\
+                    \hline
+                    \hline
+                    Type Name 1 & \# of Fields  1 & isDeleted 1 & Field Name 1  & Field Name 2 & ... & Field Name 10 \\
+                    \hline
+                    Type Name 2 & \# of Fields 2 & isDeleted 2 & Field Name 1 & Field Name 2 & ... & Field Name 10 \\
+                    \hline
+                    ... & ... & ... & ... & ... & ... \\
+                    \hline
+                    Type Name  & \# of Fields & isDeleted & Field Name 1 & Field Name 2 & ... & Field Name 10 \\
+                    \hline
+                    \end{tabular}
+                \end{center}
+            \caption{Design of a System Catalogue \emph{(Starting with the \# of Records)}}
+            \label{table:1}
+        \end{table}
+    \subsection{Data File Design \& Page Header}
+                \begin{table}[h!]
+                \begin{center}
+                \begin{tabular}{ | c | c | c | c | c | c | c |}
+                \hline
+                    \multicolumn{6}{|c|}{\# of Records} \\
+                \hline
+                \hline
+                    \multicolumn{6}{|c|}{Page Header} \\
+                \hline
+                \hline
+                    \multicolumn{3}{|c|}{Page ID} &
+                    \multicolumn{3}{|c|}{\# of Records} \\
+                \hline
+                \hline
+                    \multicolumn{2}{|c|}{Record Header} &
+                    \multicolumn{4}{|c|}{Fields} \\
+                \hline
+                \hline
+                isEmpty 1 & isDeleted 1 & Field 1  & ... & Field 10 \\
+                \hline
+                isEmpty 2 & isDeleted 2 & Field 1 & ... & Field 10 \\
+                \hline
+                ... & ... & ... & ...  & ...  \\
+                \hline
+                isEmpty  & isDeleted  & Field 1  & ... & Field 10 \\
+                \hline
+                \end{tabular}
+            \end{center}
+    \caption{Design of a Data File \emph{(Starting with the \# of Records)}}
+    \label{table:1}
+    \end{table}
+    
+\newpage
+\section{Operations}
+    \subsection{DDL Operations}
+        Database Design Language \emph{(DDL)} operations are related to System Catalogue most of the time.
+        \subsubsection{Create a type}
+        
+        
+        \begin{algorithm}[H]
+\DontPrintSemicolon
+\textbf{function} createType \\
+\textbf{declare} type \\
+catalogue $\leftarrow$ open("SystemCatalogue.txt") \\
+type.name $\leftarrow$ User Input \\
+type.numberOfFields $\leftarrow$ User Input \\
+  
+ \For{i $\leftarrow$ 0 to type.numberOfField}    
+        { 
+        	type.fields[i].name $\leftarrow$ User Input
+        }
+  
+ \If{Page.findTypeByName(type.name) != None}{
+            \textbf{return}
+}
+  
+ \For{i $\leftarrow$ 0 to 32}
+ {
+    buffer $\leftarrow$ getPage(catalogue,i) \\
+    type\_number $\leftarrow$ Page.findInteger(buffer, 4) \\
+    \If{type\_number != 17}{
+                \For{j $\leftarrow$ 0 to type\_number}{
+                    temp $\leftarrow$ Page.findType(buffer, j)
+
+                    \If{temp.name == type.name \textbf{and} temp.isDeleted}{
+                        Page.putType(buffer, j, type) \\
+                        putPage(catalogue, i, buffer) \\
+                        \textbf{return}
+                    }
+                }
+                        
+                \For{j $\leftarrow$ 0 to  17}{
+                    Page.putType(buffer, j, type) \\
+                    Page.putInteger(buffer, 4, type\_number + 1) \\
+                    self.putPage(catalogue, i, buffer) \\
+                    \textbf{return}
+                }
+    }
+ }
+  
+    catalogue.pageHeader.numberOfRecord++ \\
+\textbf{endFunction} 
+   
+
+\caption{Creating Data Type}
+\end{algorithm}
+        
+        \subsubsection{Delete a type}
+                 \begin{algorithm}[H]
+\DontPrintSemicolon
+\textbf{function} deleteType \\
+catalogue $\leftarrow$ open("SystemCatalogue.txt") \\
+name $\leftarrow$ User Input \\
+i $\leftarrow$ 0 \\
+file $\leftarrow$ name + i + ".txt" \\
+\While{File.existFile(file)}{
+    remove(file) \\
+    i+=1
+}
+  
+ \For{i $\leftarrow$ 0 to 32}
+ {
+    buffer $\leftarrow$ getPage(catalogue,i) \\
+    type\_number $\leftarrow$ Page.findInteger(buffer, 4) \\
+    \If{type\_number == 0}{
+        \textbf{return}
+    }
+    \For{j $\leftarrow$ 0 to type\_number}{
+        temp $\leftarrow$ Page.findType(buffer, j)
+
+        \If{temp.name == name \textbf{and} not temp.isDeleted \textbf{and} temp.isExist}{
+            temp.isDeleted $\leftarrow$ \textbf{True} \\
+            Page.putType(buffer, j, temp) \\
+            putPage(catalogue, i, buffer) \\
+            \textbf{return}
+        }
+    }
+    
+ }
+  
+    catalogue.pageHeader.numberOfRecord- - \\
+\textbf{endFunction} 
+\caption{Deleting Data Type}
+\end{algorithm}
+        \subsubsection{List all types}
+            \begin{algorithm}[H]
+\DontPrintSemicolon
+\textbf{function} listType \\
+catalogue $\leftarrow$ open("SystemCatalogue.txt") \\
+type\_list $\leftarrow$ [ ] \\
+
+ \For{i $\leftarrow$ 0 to 32}
+ {
+    buffer $\leftarrow$ getPage(catalogue,i) \\
+    type\_number $\leftarrow$ Page.findInteger(buffer, 4) \\
+    
+    \For{j $\leftarrow$ 0 to type\_number}{
+        temp $\leftarrow$ Page.findType(buffer, j)
+
+        \If{not temp.isDeleted \textbf{and} temp.isExist}{
+            type\_list.append(temp)
+        }
+    }
+    
+ }
+  
+   \textbf{return} type\_list \\
+\textbf{endFunction} 
+\caption{List All Types}
+\end{algorithm}
+\newpage
+    \subsection{DML Operations}
+     Database Manipulation Language \emph{(DML)} are generally is related to data files.
+        \subsubsection{Create a record}
+                    \begin{algorithm}[H]
+\DontPrintSemicolon
+\textbf{function} createRecord \\
+\textbf{declare} record \\
+record.name $\leftarrow$ User Input \\
+  
+ \For{i $\leftarrow$ 0 to record.numberOfField}    
+        { 
+        	record.fields[i].values $\leftarrow$ User Input
+        }
+\If{Page.findTypeByName(type.name) == None}{
+            \textbf{return}
+}
+
+\textbf{call} binarySort(0, record, 0)
+  
+\textbf{endFunction} \\\\
+\textbf{function} binarySort(pageID, record, fileno) \\ 
+filename $\leftarrow$ record.name + fileno \\ 
+\If{not File.existFile(filename)}{
+    createDataFile(filename, record) \\ 
+    \textbf{return}
+}
+buffer $\leftarrow$ getPage(filename, pageID) \\
+record\_number $\leftarrow$ Page.findInteger(buffer, 4) \\
+current $\leftarrow$ binarySearch(buffer, 0, record\_number-1, record.fieldValues[0], record.name) \\
+next $\leftarrow$ Record()
+
+\While{current \textless record\_number}{
+    next $\leftarrow$ Page.findRecord(buffer, current, record.name) \\
+    Page.putRecord(buffer, current, record) \\
+    putPage(filename, pageID, buffer) \\
+    current+=1 \\
+    record $\leftarrow$ Page.assign(next)
+}
+
+\If{current == 48}{
+    \If{pageID == 31}{
+        \textbf{call} binarySort(0, record, fileno+1)
+    }
+    \Else{
+        \textbf{call} binarySort(pageID+1, record, fileno) \\
+    \textbf{return}
+    }
+}
+\Else{
+    putFileHeader(filename, 1) \\
+    Page.putInteger(buffer, 4, record\_number+1) \\
+    Page.putRecord(buffer, current, record) \\
+    putPage(filename, pageID, buffer) 
+}
+
+
+\caption{Creating a Record}
+\end{algorithm}
+        
+        \subsubsection{Delete a record}
+            \begin{algorithm}[H]
+\DontPrintSemicolon
+\textbf{function} deleteRecord(name) \\
+\If{Page.findTypeByName(name) == None}{
+    \textbf{return}
+}
+i $\leftarrow$ 0 \\
+filename $\leftarrow$ name + i \\
+record $\leftarrow$ Record() \\
+
+\While{File.existFile(filename)}{
+    \For{j $\leftarrow$ 0 to 32}{
+        buffer $\leftarrow$ getPage(filename, j) \\
+        record\_number $\leftarrow$ Page.findInteger(buffer, 4)
+
+        \For{k $\leftarrow$ 0 to record\_number}{
+            record $\leftarrow$ Page.findRecord(buffer, k, name) \\
+            record\_key $\leftarrow$ record.fieldValues[0] 
+
+            \If{record\_key == key \textbf{and} not record.isDeleted \textbf{and} record.isExist}{
+                record.isDeleted$\leftarrow$ True \\
+                Page.putRecord(buffer, k, record) \\
+                putPage(filename, j, buffer) \\
+                putFileHeader(filename, -1) \\
+                file\_header $\leftarrow$ getFileHeader(filename) \\
+                number $\leftarrow$ Page.findInteger(file\_header, 0) \\
+
+                \If{number == 0}{
+                    remove(filename) \\
+                    \textbf{return}
+                }
+            }
+        }     
+    }
+    i+=1 \\
+    filename $\leftarrow$ name + i
+    
+}
+\textbf{endFunction} 
+\caption{Deleting a Record}
+\end{algorithm}
+        \subsubsection{Search for a record with Primary Key}
+            \begin{algorithm}[H]
+\DontPrintSemicolon
+\textbf{function} searchRecord(name, key) \\
+\If{Page.findTypeByName(name) == None}{
+    \textbf{return}
+}
+i $\leftarrow$ 0 \\
+filename $\leftarrow$ name + i \\
+record $\leftarrow$ Record() \\
+
+\While{File.existFile(filename)}{
+    \For{j $\leftarrow$ 0 to 32}{
+        buffer $\leftarrow$ getPage(filename, j) \\
+        record\_number $\leftarrow$ Page.findInteger(buffer, 4)
+
+        \For{k $\leftarrow$ 0 to record\_number}{
+            record $\leftarrow$ Page.findRecord(buffer, k, name) \\
+            record\_key $\leftarrow$ record.fieldValues[0] 
+
+            \If{record\_key == key \textbf{and} not record.isDeleted \textbf{and} record.isExist}{
+                
+                    \textbf{return} record
+                
+            }
+        }     
+    }
+    i+=1 \\
+    filename $\leftarrow$ name + i
+    
+}
+\textbf{endFunction}
+\caption{Searching for a Record}
+\end{algorithm}
+\subsubsection{Update for a record with Primary Key}
+            \begin{algorithm}[H]
+\DontPrintSemicolon
+\textbf{function} updateRecord(record) \\
+\If{searchRecord(record.name, record.fieldValues[0]) == None}{
+    \textbf{return}
+}
+i $\leftarrow$ 0 \\
+filename $\leftarrow$ name + i \\
+temp $\leftarrow$ Record() \\
+
+\While{File.existFile(filename)}{
+    \For{j $\leftarrow$ 0 to 32}{
+        buffer $\leftarrow$ getPage(filename, j) \\
+        record\_number $\leftarrow$ Page.findInteger(buffer, 4)
+
+        \For{k $\leftarrow$ 0 to record\_number}{
+            temp $\leftarrow$ Page.findRecord(buffer, k, name) \\
+            temp\_key $\leftarrow$ record.fieldValues[0] 
+
+            \If{temp\_key == key \textbf{and} not temp.isDeleted \textbf{and} temp.isExist}{
+                Page.putRecord(buffer, k, record) \\
+                putPage(filename, j, buffer) \\
+                \textbf{return}
+                
+            }
+        }     
+    }
+    i+=1 \\
+    filename $\leftarrow$ name + i
+    
+}
+\textbf{endFunction}
+\caption{Updating for a Record}
+\end{algorithm}
+        \subsubsection{List all records of a type}
+             \begin{algorithm}[H]
+\DontPrintSemicolon
+\textbf{function} listRecords \\
+\If{Page.findTypeByName(name) == None}{
+    \textbf{return}
+}
+record\_list $\leftarrow$ [ ] \\
+i $\leftarrow$ 0 \\
+filename $\leftarrow$ name + i \\
+record $\leftarrow$ Record() \\
+
+\While{File.existFile(filename)}{
+    \For{j $\leftarrow$ 0 to 32}{
+        buffer $\leftarrow$ getPage(filename, j) \\
+        record\_number $\leftarrow$ Page.findInteger(buffer, 4)
+
+        \For{k $\leftarrow$ 0 to record\_number}{
+            record $\leftarrow$ Page.findRecord(buffer, k, name) \\
+
+            \If{not record.isDeleted \textbf{and} record.isExist}{
+                record\_list.append(record)
+            }
+        }     
+    }
+    i+=1 \\
+    filename $\leftarrow$ name + i
+    
+}
+\textbf{return} record\_list \\
+\textbf{endFunction}
+\caption{Listing All Records for a Type}
+\end{algorithm}
+\newpage
+\section{Conclusions \& Assessment}
+    In this documentation a storage manager design is proposed where size of each
+structure is fixed. This creates an inefficiency in terms of memory usage while
+it makes the storage manager easier to implement.  In my design each file can hold at most one record type and can have at most 32 pages. This make accessing a record with its primary key faster but insertion is slower since we have to access a specific page to insert a record. Since we did not do any error checking, if a user enters a wrong input, this storage manager cannot handle it. I decided to use binary sort and search to create record. One down for our design could be the performance if the database is large, program might need to resort so much of opening and closing files and pages, which could be a lot of overhead on CPU.  \\
+To sum up, this is really simple storage manager design and it has it owns pros and cons. But mostly, it is very efficient while accessing a record but not so much while insertion. But we can modify this design and improve it. Hence, implementing it would also be easier with necessary modifications that can be realized on the run.
+\end{document}
+

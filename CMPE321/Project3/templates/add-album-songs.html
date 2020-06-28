@@ -1,0 +1,80 @@
+<!DOCTYPE html></body></body>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    #customers {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #customers tr:hover {background-color: #ddd;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+    }
+    
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    .topnav a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    </style>
+<div class="topnav">       
+  <a href="/">Homepage</a>
+</div>
+
+<form method="POST" action="/add-album-songs" >
+    Add Album Songs ->
+    <input type="hidden" name="contributors" value="{{ contributors }}" />
+    <input type="hidden" name="album_id" value="{{ album_id }}" />
+    <input type="text" name="id" minlength="1" maxlength="30" placeholder="id" required> </input>
+     <input type="text" name="title" minlength="1" maxlength="30" placeholder="title" required> </input>
+     <br>
+
+     {% for cur in range(contributors) %}
+     Contributor {{cur+1}} ->
+     <input type="text" name="contributor_name{{cur}}" minlength="1" maxlength="30" placeholder="name" required> </input>
+     <input type="text" name="contributor_surname{{cur}}" minlength="1" maxlength="30" placeholder="surname"> </input>
+     <br>
+      {% endfor %}
+      <input type="submit" value="ADD"/> <br>
+ </form>
+
+</div>
