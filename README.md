@@ -30,6 +30,10 @@
 - [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE260/Project2) `Scheme`
 - [Assignment 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE260/Assignment2) `LaTeX`
 
+**[IE306 - SYSTEMS SIMULATION](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306)**
+- [Assignment 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Assignment1) `Python`  
+- [Assignment 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Assignment2) `Excel`
+
 **[IE310 - Operations Research](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310)**
 - [Assignment 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment1) `Python`  
 - [Assignment 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment2) `Python`
