@@ -6,6 +6,6 @@ Spring - 2020 | AYBEK KORUGAN
 
 
 
-**[Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Project1) `Python`**
+**[Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Project1) `Python`**
 
-**[Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Project2) `Excel`**
+**[Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Project2) `Excel`**
