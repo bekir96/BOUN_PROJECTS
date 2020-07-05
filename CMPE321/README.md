@@ -2,7 +2,7 @@
 
 Term | Instructor
 -----| ----------
-Summer - 2019 | Taflan Gündem
+Spring - 2020 | Taflan Gündem
 
 
 
