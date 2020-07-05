@@ -2,7 +2,7 @@
 
 Term | Instructor
 -----| ----------
-Spring - 2020 | AYBEK KORUGAN
+Spring - 2020 | Aybek KORUGAN
 
 
 
