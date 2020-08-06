@@ -46,6 +46,8 @@
 
 **[CmpE321 - Introduction to Database System](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE321)**
 - [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE321/Project1) `LaTeX`
+- [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE321/Project2) `Python`
+- [Project 3](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE321/Project3) `Python`
 
 **[CmpE322 - Operating System](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE322)**
 - [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE322/Project1) `C++`
