@@ -42,6 +42,11 @@
 - [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE322/Project1) `C++`
 - [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE322/Project2) `C++`
 
+**[CmpE362 - Introduction to Signal Processing](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE362)**
+- [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE362/Project1) `MatLab`
+- [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE362/Project2) `MatLab`
+- [Project 3](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE362/Project3) `MatLab`
+
 **[CmpE487 - SP. TP. Applied Computer Networks](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487)**
 - [Bash-Chat](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Bash-Chat) `Bash`
 - [Python-Chat](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Python-Chat) `Python`
@@ -49,7 +54,7 @@
 - [Diffie-Hellman](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Diffie-Hellman) `Python`
 - [Final Project](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Final%20Project) `Python`
 
-**[IE306 - SYSTEMS SIMULATION](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306)**
+**[IE306 - Systems Simulation](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306)**
 - [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Project1) `Python`  
 - [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Project2) `Excel`
 
