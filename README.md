@@ -33,17 +33,6 @@
 **[CmpE300 - Analysis of Algorithms](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE300)**
 - [MPI](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE300/MPI%20Programming%20Projects) `Python` 
 
-**[IE306 - SYSTEMS SIMULATION](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306)**
-- [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Project1) `Python`  
-- [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Project2) `Excel`
-
-**[IE310 - Operations Research](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310)**
-- [Assignment 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment1) `Python`  
-- [Assignment 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment2) `Python`
-- [Assignment 3](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment3) `Python`
-- [Assignment 5](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment5) `Python`
-- [Assignment 6](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment6) `Python` 
-
 **[CmpE321 - Introduction to Database System](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE321)**
 - [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE321/Project1) `LaTeX`
 - [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE321/Project2) `Python`
@@ -59,4 +48,15 @@
 - [Zeroconf-Chat](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/ZeroconfChat) `Python`
 - [Diffie-Hellman](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Diffie-Hellman) `Python`
 - [Final Project](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Final%20Project) `Python`
+
+**[IE306 - SYSTEMS SIMULATION](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306)**
+- [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Project1) `Python`  
+- [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Project2) `Excel`
+
+**[IE310 - Operations Research](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310)**
+- [Assignment 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment1) `Python`  
+- [Assignment 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment2) `Python`
+- [Assignment 3](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment3) `Python`
+- [Assignment 5](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment5) `Python`
+- [Assignment 6](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment6) `Python` 
 
