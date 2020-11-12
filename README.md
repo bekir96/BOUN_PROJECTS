@@ -47,7 +47,12 @@
 - [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE362/Project2) `MatLab`
 - [Project 3](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE362/Project3) `MatLab`
 
+**[CmpE436 - Concurrent and Distributed Programming](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE436)**
+
+- [Assignment 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE436/Assignment1) Java   
+
 **[CmpE487 - SP. TP. Applied Computer Networks](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487)**
+
 - [Bash-Chat](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Bash-Chat) `Bash`
 - [Python-Chat](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Python-Chat) `Python`
 - [Zeroconf-Chat](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/ZeroconfChat) `Python`
@@ -55,10 +60,12 @@
 - [Final Project](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Final%20Project) `Python`
 
 **[IE306 - Systems Simulation](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306)**
+
 - [Project 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Project1) `Python`  
 - [Project 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306/Project2) `Excel`
 
 **[IE310 - Operations Research](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310)**
+
 - [Assignment 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment1) `Python`  
 - [Assignment 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment2) `Python`
 - [Assignment 3](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE310/Assignment3) `Python`
