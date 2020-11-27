@@ -50,6 +50,7 @@
 **[CmpE436 - Concurrent and Distributed Programming](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE436)**
 
 - [Assignment 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE436/Assignment1) Java   
+- [Assignment 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE436/Assignment2) Java   
 
 **[CmpE487 - SP. TP. Applied Computer Networks](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487)**
 
@@ -58,6 +59,10 @@
 - [Zeroconf-Chat](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/ZeroconfChat) `Python`
 - [Diffie-Hellman](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Diffie-Hellman) `Python`
 - [Final Project](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE487/Final%20Project) `Python`
+
+**[CmpE493 - SP.TP. Introduction to Information Retrieval](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE493)**
+
+- [Assignment 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE493/Assignment1) Java   
 
 **[IE306 - Systems Simulation](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306)**
 
