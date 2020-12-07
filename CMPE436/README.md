@@ -10,4 +10,6 @@ Fall - 2020 | Alper Şen
 
 **[Assignment 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE436/Assignment2) `Java`**
 
+**[Assignment 3](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE436/Assignment3) `Java`**
+
 

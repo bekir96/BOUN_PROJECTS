@@ -1,0 +1,15 @@
+This homework is about model based testing. I want you to download and learn the following tools.
+
+1- Graphwalker (https://graphwalker.github.io/) , look at the examples on their website 
+
+2- Appium:  http://appium.io/ 
+
+- Choose a mobile application (Android or IOS). Email me your choice. No two same applications.
+
+- Then write at least 4 different model based test scenarios for the chosen application in Graphwalker (either through Graphwalker studio or yEd editor or GW4E). For happy paths and not so happy paths.  (e.g. valid inputs and invalid inputs)
+
+- Then using Graphwalker you are going to generate test cases from your test scenarios wrt random and other coverage criteria.
+
+- The functionality of the nodes and edges in Graphwalker should be implemented in Java.
+
+Submit all your documents as a zip file. Include a README describing your test scenarios. You will demo your assignment.
