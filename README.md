@@ -63,7 +63,10 @@
 
 **[CmpE493 - SP.TP. Introduction to Information Retrieval](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE493)**
 
-- [Assignment 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE493/Assignment1) `Python`  
+- [Assignment 1](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE493/Assignment1) `Python`
+- [Assignment 2](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE493/Assignment2) `Python`
+- [Assignment 3](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE493/Assignment3) `Python`
+- [Assignment 4](https://github.com/bekir96/BOUN_PROJECTS/tree/master/CMPE493/Assignment4) `Python`  
 
 **[IE306 - Systems Simulation](https://github.com/bekir96/BOUN_PROJECTS/tree/master/IE306)**
 

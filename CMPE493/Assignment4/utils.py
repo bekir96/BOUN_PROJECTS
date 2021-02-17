@@ -1,0 +1,10 @@
+REMOVE_STRING = 'Subject:'
+ALPHA = 1.0
+LEGITIMATE = '0'
+SPAM = '1'
+DISCRIMINATION_NUMBER = 100
+DIRECTORY_TRAIN_LEGITIMATE = r'dataset/training/legitimate'
+DIRECTORY_TRAIN_SPAM = r'dataset/training/spam'
+DIRECTORY_TEST_LEGITIMATE = r'dataset/test/legitimate'
+DIRECTORY_TEST_SPAM = r'dataset/test/spam'
+R = 1500
